@@ -4,8 +4,6 @@
  *  Quick-find algorithm.
  *
  ****************************************************************************/
-package com.unionfind;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
