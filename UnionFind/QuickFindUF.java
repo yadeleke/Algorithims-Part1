@@ -29,17 +29,12 @@ public class QuickFindUF {
         return count;
     }
 
-    // Return component identifier for component containing p
-    public int find(int p) {
-        return id[p];
-    }
-
-    // are elements p and q in the same component?
+    // check if elements p and q are in connected component
     public boolean connected(int p, int q) {
         return id[p] == id[q];
     }
 
-    // merge components containing p and q
+    // connect p and q
     public void union(int p, int q) {
         if (connected(p, q)){
             return;
@@ -69,12 +64,14 @@ public class QuickFindUF {
         QuickFindUF uf = new QuickFindUF(N);
 
         // read in a sequence of pairs of integers (each in the range 0 to N-1),
-        // calling find() for each pair: If the members of the pair are not already
-        // call union() and print the pair.
+        // calling connected() for each pair to check if they are already connected
+        // if not connected call union() and print the pair.
         while (s.hasNextInt()) {
             int p = s.nextInt();
             int q = s.nextInt();
-            if (uf.connected(p, q)) continue;
+            if (uf.connected(p, q)){
+                continue;
+            }
             uf.union(p, q);
             System.out.println(p + " " + q);
         }
